@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Siswa</title>
+    <!-- BootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg">
+    <div class="container">
+      <h2>
+        <i class="bi-window-plus"></i>
+        <i class="bi-arrow-down"></i>
+        <i class="bi-arrow-down"></i>
+        <i class="bi-arrow-down"></i>
+      </h2>
+      <form action="add.php" method="post" enctype="multipart/form-data">
+        <!-- Nama -->
+        <div class="input-group">
+          <label class="label">Nama</label>
+          <input autocomplete="off" name="nama" id="nama" class="input" type="text" required />
+        </div>
+        <!-- email -->
+        <div class="input-group">
+          <label class="label">Email</label>
+          <input autocomplete="off" name="email" id="email" class="input" type="email" required />
+        </div>
+        <!-- Nisn -->
+        <div class="input-group">
+          <label class="label">NISN</label>
+          <input autocomplete="off" name="nisn" id="nisn" class="input" type="text" required />
+        </div>
+        <!-- Tanggal Lahir -->
+        <div class="input-group">
+          <label class="label">Tanggal Lahir</label>
+          <input autocomplete="off" name="tgl_lahir" id="tgl_lahir" class="input" type="date" required />
+        </div>
+        <!-- Jurusan -->
+        <div class="input-group">
+          <label class="label" id="jurusan">Jurusan Sekolah</label>
+          <select name="jurusan" id="jurusan" required>
+            <option value="Teknik Pembuatan Kain">Teknik Pembuatan Kain</option>
+            <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+            <option value="Teknik Ototronik">Teknik Ototronik</option>
+            <option value="Teknik Mesin">Teknik Mesin</option>
+          </select>
+          <!-- Jenis Kelamin -->
+          <div class="input-group">
+            <label class="label jkl">Jenis Kelamin</label>
+            <div id="jk">
+              <label for="laki-laki" class="label">Laki-Laki<input autocomplete="off" name="jenis_klmin" id="jenis_klmin" type="radio" value="laki-laki" /></label>
+              <label for="laki-laki" class="label">Perempuan<input autocomplete="off" name="jenis_klmin" id="jenis_klmin" type="radio" value="perempuan" /></label>
+            </div>
+          </div>
+        </div>
+        <!-- Gambar -->
+        <div class="input-group">
+          <div class="file-input">
+            <input type="file" id="file" class="file" name="gambar" required />
+            <label for="file">
+              Pilih Gambar
+              <p class="file-name"></p>
+            </label>
+          </div>
+          <!-- Submit -->
+          <button class="cssbuttons-io-button" type="submit" name="submit">
+            Kirim!
+            <div class="icon">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </form>
+    </div>
+    <script>
+      const file = document.querySelector("#file");
+      file.addEventListener("change", (e) => {
+        // Get the selected file
+        const [file] = e.target.files;
+        // Get the file name and size
+        const { name: fileName, size } = file;
+        // Convert size in bytes to kilo bytes
+        const fileSize = (size / 1000).toFixed(2);
+        // Set the text content
+        const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+        document.querySelector(".file-name").textContent = fileNameAndSize;
+      });
+    </script>
+  </body>
+</html>
